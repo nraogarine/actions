@@ -14,7 +14,6 @@ body:
     attributes:
       label: Environment Identifier
       description: "Enter the environment identifier. Options: dev, stg, nonprod, sbx, prod."
-      placeholder: "dev"
     validations:
       required: true
       
@@ -23,10 +22,7 @@ body:
     attributes:
       label: Azure Region
       description: "Select the Azure region."
-      options:
-        - centralus
-        - eastus
-        - eastus2
+      
     validations:
       required: true
  
