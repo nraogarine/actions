@@ -15,6 +15,8 @@ body:
       label: Environment Identifier
       description: "Enter the environment identifier. Options: dev, stg, nonprod, sbx, prod."
       placeholder: "dev"
+    validations:
+      required: true
       
   - type: dropdown
     id: azure_region
@@ -25,7 +27,9 @@ body:
         - centralus
         - eastus
         - eastus2
+    validations:
       required: true
+ 
 
   - type: input
     id: business_unit
@@ -33,7 +37,7 @@ body:
       label: Business Unit
       description: "Enter the business unit."
       placeholder: "e.g., Sales, IT, HR"
-      required: true
+     
 
   - type: input
     id: access_connector_id
@@ -41,7 +45,8 @@ body:
       label: Access Connector ID
       description: "Enter the Access Connector ID. It should be in the format `/subscriptions/xxxx`."
       placeholder: "/subscriptions/xxxx"
-      required: true
+    validations:
+      required: true  
 
   - type: input
     id: user_assigned_managed_identity
@@ -49,14 +54,16 @@ body:
       label: User Assigned Managed Identity
       description: "Enter the user-assigned managed identity."
       placeholder: "e.g., my-managed-identity"
+    validations:
       required: true
-
+      
   - type: input
     id: storage_container_url
     attributes:
       label: Storage Container URL
       description: "Enter the storage container URL in the format `abfss://<container-name>@<storage-container-name>.dfs.core.windows.net`."
       placeholder: "abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
+    validations:
       required: true
 
   - type: input
@@ -65,6 +72,7 @@ body:
       label: Owner Group
       description: "Enter the owner group. It should be in the format `azu_xxxxx`."
       placeholder: "azu_xxxxx"
+    validations:
       required: true
 
   - type: input
@@ -73,4 +81,5 @@ body:
       label: Workspace Name
       description: "Enter the workspace name. It should not contain the word 'workspace'."
       placeholder: "e.g., my-workspace"
+    validations:
       required: true
