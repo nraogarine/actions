@@ -5,7 +5,7 @@ labels: ["environment-request"]
 assignees: ["team-lead"]
 
 body:
-  - type: dropdown
+  - type: input
     id: environment_identifier
     attributes:
       label: Environment Identifier
@@ -19,7 +19,7 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: azure_region
     attributes:
       label: Azure Region
