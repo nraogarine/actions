@@ -1,6 +1,6 @@
-name: New Environment Request
-description: Submit the details to request a new environment setup.
-title: "[New Environment Request] - <short description>"
+name: UC Enablement Intake
+description: Submit the details to request to enabel UC.
+title: "[UC Enablement] - <short description>"
 labels: ["environment-request"]
 assignees: ["team-lead"]
 
