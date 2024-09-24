@@ -15,20 +15,15 @@ jobs:
       - name: Extract issue details
         id: extract-issue
         run: |
-          # Debugging step: Echo the full issue body for verification
-          echo "Issue Body:"
-          echo "${{ github.event.issue.body }}"
-
-          # Extracting values using grep and sed
-          #environment_identifier=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Environment Identifier' | tail -n1 | xargs)
+          # Extracting values from the issue body using GitHub context
           environment_identifier="${{ github.event.issue.body | fromJson | select(.environment_identifier) }}"
-          azure_region=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Azure Region' | tail -n1 | xargs)
-          business_unit=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Business Unit' | tail -n1 | xargs)
-          access_connector_id=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Access Connector ID' | tail -n1 | xargs)
-          user_assigned_managed_identity=$(echo "${{ github.event.issue.body }}" | grep -A1 '### User Assigned Managed Identity' | tail -n1 | xargs)
-          storage_container_url=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Storage Container URL' | tail -n1 | xargs)
-          owner_group=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Owner Group' | tail -n1 | xargs)
-          workspace_name=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Workspace Name' | tail -n1 | xargs)
+          azure_region="${{ github.event.issue.body | fromJson | select(.azure_region) }}"
+          business_unit="${{ github.event.issue.body | fromJson | select(.business_unit) }}"
+          access_connector_id="${{ github.event.issue.body | fromJson | select(.access_connector_id) }}"
+          user_assigned_managed_identity="${{ github.event.issue.body | fromJson | select(.user_assigned_managed_identity) }}"
+          storage_container_url="${{ github.event.issue.body | fromJson | select(.storage_container_url) }}"
+          owner_group="${{ github.event.issue.body | fromJson | select(.owner_group) }}"
+          workspace_name="${{ github.event.issue.body | fromJson | select(.workspace_name) }}"
 
           echo "Extracted values:"
           echo "Environment Identifier: '$environment_identifier'"
