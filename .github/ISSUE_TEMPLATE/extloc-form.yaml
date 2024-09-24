@@ -1,74 +1,77 @@
-# .github/ISSUE_TEMPLATE/storage-request.yml
-name: "Storage Request Form"
-description: "Fill out the form to request new storage configuration"
-title: "[Storage Request] Request storage configuration"
-labels: ["storage-request", "pending-validation"]
+name: "Environment Request"
+description: "Use this form to request a new environment setup"
+title: "[Environment Request] - "
+labels: 
+  - environment-request
 body:
-  - type: dropdown
-    id: environment-identifier
+  - type: markdown
     attributes:
-      label: "Environment Identifier"
-      options:
-        - dev
-        - stg
-        - nonprod
-        - sbx
-        - prod
-      description: "Select environment identifier"
+      value: |
+        ### Please fill out the details for the environment request below:
+
+  - type: input
+    id: environment_identifier
+    attributes:
+      label: Environment Identifier
+      description: "Enter the environment identifier. Options: dev, stg, nonprod, sbx, prod."
+      placeholder: "dev"
       required: true
 
   - type: dropdown
-    id: azure-region
+    id: azure_region
     attributes:
-      label: "Azure Region"
+      label: Azure Region
+      description: "Select the Azure region."
       options:
         - centralus
         - eastus
         - eastus2
-      description: "Select Azure region"
       required: true
 
   - type: input
-    id: business-unit
+    id: business_unit
     attributes:
-      label: "Business Unit"
-      description: "Enter business unit (any text)"
+      label: Business Unit
+      description: "Enter the business unit."
+      placeholder: "e.g., Sales, IT, HR"
       required: true
 
   - type: input
-    id: access-connector-id
+    id: access_connector_id
     attributes:
-      label: "Access Connector ID"
-      description: "Should be in the format /subscriptions/xxxx"
+      label: Access Connector ID
+      description: "Enter the Access Connector ID. It should be in the format `/subscriptions/xxxx`."
       placeholder: "/subscriptions/xxxx"
       required: true
 
   - type: input
-    id: user-assigned-managed-identity
+    id: user_assigned_managed_identity
     attributes:
-      label: "User Assigned Managed Identity"
-      description: "Enter the user-assigned managed identity"
+      label: User Assigned Managed Identity
+      description: "Enter the user-assigned managed identity."
+      placeholder: "e.g., my-managed-identity"
       required: true
 
   - type: input
-    id: workspace-name
+    id: storage_container_url
     attributes:
-      label: "Workspace Name"
-      description: "Enter the workspace name (it should not contain 'workspace')"
-      required: true
-
-  - type: textarea
-    id: storage-container-urls
-    attributes:
-      label: "Storage Container URLs"
-      description: "Enter one or more storage container URLs in the format: abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
-      placeholder: "abfss://container@storage.dfs.core.windows.net"
+      label: Storage Container URL
+      description: "Enter the storage container URL in the format `abfss://<container-name>@<storage-container-name>.dfs.core.windows.net`."
+      placeholder: "abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
       required: true
 
   - type: input
-    id: owner-group
+    id: owner_group
     attributes:
-      label: "Owner Group"
-      description: "Should be in the format: azu_xxxxx"
+      label: Owner Group
+      description: "Enter the owner group. It should be in the format `azu_xxxxx`."
       placeholder: "azu_xxxxx"
+      required: true
+
+  - type: input
+    id: workspace_name
+    attributes:
+      label: Workspace Name
+      description: "Enter the workspace name. It should not contain the word 'workspace'."
+      placeholder: "e.g., my-workspace"
       required: true
