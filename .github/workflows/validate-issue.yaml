@@ -15,7 +15,6 @@ jobs:
       - name: Extract issue details
         id: extract-issue
         run: |
-          # Extracting values from the issue body using GitHub context
           environment_identifier="${{ github.event.issue.body | fromJson | select(.environment_identifier) }}"
           azure_region="${{ github.event.issue.body | fromJson | select(.azure_region) }}"
           business_unit="${{ github.event.issue.body | fromJson | select(.business_unit) }}"
