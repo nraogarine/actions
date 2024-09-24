@@ -5,21 +5,29 @@ labels: ["environment-request"]
 assignees: ["team-lead"]
 
 body:
-  - type: input
+  - type: dropdown
     id: environment_identifier
     attributes:
       label: Environment Identifier
       description: "Select the environment type (dev/stg/nonprod/sbx/prod)."
-      
+      options:
+        - dev
+        - stg
+        - nonprod
+        - sbx
+        - prod
     validations:
       required: true
 
-  - type: input
+  - type: dropdown
     id: azure_region
     attributes:
       label: Azure Region
       description: "Select the Azure region."
-      
+      options:
+        - centralus
+        - eastus
+        - eastus2
     validations:
       required: true
 
