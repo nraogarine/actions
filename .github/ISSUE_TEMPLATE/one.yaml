@@ -67,7 +67,7 @@ body:
       placeholder: "abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
     validations:
       required: true
-      pattern: "^abfss://.*@.*\.dfs\.core\.windows\.net$"
+      pattern: "^abfss://$"
 
   - type: input
     id: owner_group
