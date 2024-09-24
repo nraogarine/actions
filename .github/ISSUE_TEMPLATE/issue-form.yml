@@ -1,41 +1,77 @@
-name: Azure Configuration Request
-description: Please provide the following details to request an Azure setup
-title: "[Request] Azure Configuration"
-body:
-  - type: markdown
-    attributes:
-      value: "Please fill out the following fields for Azure setup validation."
+name: "Environment Configuration Form"
+description: "Please provide the required details for the environment configuration."
+title: "Environment Configuration Request"
+labels: ["configuration-request"]
 
-  - type: input
+body:
+  - type: dropdown
+    id: environment_identifier
+    attributes:
+      label: "Environment Identifier"
+      options:
+        - dev
+        - stg
+        - nonprod
+        - sbx
+        - prod
+      description: "Select the environment identifier (e.g., dev, stg, nonprod, sbx, prod)"
+      required: true
+
+  - type: dropdown
     id: azure_region
     attributes:
-      label: Azure Region Name
-      placeholder: "e.g., East US, West Europe"
-      description: "Provide the Azure region where the resources will be deployed."
+      label: "Azure Region"
+      options:
+        - centralus
+        - eastus
+        - eastus2
+      description: "Select the Azure region (e.g., centralus, eastus, eastus2)"
+      required: true
 
   - type: input
-    id: connector_id
+    id: business_unit
     attributes:
-      label: Connector ID
-      placeholder: "e.g., ABC-123"
-      description: "Provide the connector ID."
+      label: "Business Unit"
+      description: "Enter the business unit (e.g., any text)"
+      placeholder: "e.g., finance, hr"
+      required: true
 
   - type: input
-    id: databricks_workspace
+    id: access_connector_id
     attributes:
-      label: Databricks Workspace Name
-      placeholder: "e.g., my-databricks-ws"
-      description: "Provide the Databricks workspace name."
+      label: "Access Connector ID"
+      description: "Enter the access connector ID (e.g., /subscriptions/xxxx)"
+      placeholder: "/subscriptions/xxxx"
+      required: true
 
   - type: input
-    id: azure_ad_group
+    id: user_assigned_managed_identity
     attributes:
-      label: Azure AD Group Name
-      placeholder: "e.g., my-ad-group"
-      description: "Provide the Azure AD group name."
+      label: "User Assigned Managed Identity"
+      description: "Enter the user-assigned managed identity (e.g., any text)"
+      placeholder: "e.g., managed-identity-name"
+      required: true
 
-  - type: textarea
-    id: additional_notes
+  - type: input
+    id: storage_container_url
     attributes:
-      label: Additional Notes (Optional)
-      description: "Any additional notes or comments for the request."
+      label: "Storage Container URL"
+      description: "Enter the storage container URL in the format: abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
+      placeholder: "e.g., abfss://my-container@my-storage.dfs.core.windows.net"
+      required: true
+
+  - type: input
+    id: owner_group
+    attributes:
+      label: "Owner Group"
+      description: "Enter the owner group in the format: azu_xxxxx"
+      placeholder: "e.g., azu_finance_team"
+      required: true
+
+  - type: input
+    id: workspace_name
+    attributes:
+      label: "Workspace Name"
+      description: "Enter the workspace name (should not contain 'workspace')"
+      placeholder: "e.g., my-workspace"
+      required: true
