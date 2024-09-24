@@ -18,7 +18,7 @@ body:
     validations:
       required: true
       
-  - type: dropdown
+  - type: input
     id: azure_region
     attributes:
       label: Azure Region
