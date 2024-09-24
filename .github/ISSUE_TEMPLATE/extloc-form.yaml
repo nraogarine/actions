@@ -1,0 +1,74 @@
+# .github/ISSUE_TEMPLATE/storage-request.yml
+name: "Storage Request Form"
+description: "Fill out the form to request new storage configuration"
+title: "[Storage Request] Request storage configuration"
+labels: ["storage-request", "pending-validation"]
+body:
+  - type: dropdown
+    id: environment-identifier
+    attributes:
+      label: "Environment Identifier"
+      options:
+        - dev
+        - stg
+        - nonprod
+        - sbx
+        - prod
+      description: "Select environment identifier"
+      required: true
+
+  - type: dropdown
+    id: azure-region
+    attributes:
+      label: "Azure Region"
+      options:
+        - centralus
+        - eastus
+        - eastus2
+      description: "Select Azure region"
+      required: true
+
+  - type: input
+    id: business-unit
+    attributes:
+      label: "Business Unit"
+      description: "Enter business unit (any text)"
+      required: true
+
+  - type: input
+    id: access-connector-id
+    attributes:
+      label: "Access Connector ID"
+      description: "Should be in the format /subscriptions/xxxx"
+      placeholder: "/subscriptions/xxxx"
+      required: true
+
+  - type: input
+    id: user-assigned-managed-identity
+    attributes:
+      label: "User Assigned Managed Identity"
+      description: "Enter the user-assigned managed identity"
+      required: true
+
+  - type: input
+    id: workspace-name
+    attributes:
+      label: "Workspace Name"
+      description: "Enter the workspace name (it should not contain 'workspace')"
+      required: true
+
+  - type: textarea
+    id: storage-container-urls
+    attributes:
+      label: "Storage Container URLs"
+      description: "Enter one or more storage container URLs in the format: abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
+      placeholder: "abfss://container@storage.dfs.core.windows.net"
+      required: true
+
+  - type: input
+    id: owner-group
+    attributes:
+      label: "Owner Group"
+      description: "Should be in the format: azu_xxxxx"
+      placeholder: "azu_xxxxx"
+      required: true
