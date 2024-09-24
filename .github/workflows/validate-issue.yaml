@@ -20,7 +20,8 @@ jobs:
           echo "${{ github.event.issue.body }}"
 
           # Extracting values using grep and sed
-          environment_identifier=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Environment Identifier' | tail -n1 | xargs)
+          #environment_identifier=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Environment Identifier' | tail -n1 | xargs)
+          environment_identifier="${{ github.event.issue.body | fromJson | select(.environment_identifier) }}"
           azure_region=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Azure Region' | tail -n1 | xargs)
           business_unit=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Business Unit' | tail -n1 | xargs)
           access_connector_id=$(echo "${{ github.event.issue.body }}" | grep -A1 '### Access Connector ID' | tail -n1 | xargs)
