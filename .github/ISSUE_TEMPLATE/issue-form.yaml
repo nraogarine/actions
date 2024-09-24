@@ -10,12 +10,7 @@ body:
     attributes:
       label: Environment Identifier
       description: "Select the environment type (dev/stg/nonprod/sbx/prod)."
-      options:
-        - dev
-        - stg
-        - nonprod
-        - sbx
-        - prod
+      
     validations:
       required: true
 
@@ -24,10 +19,7 @@ body:
     attributes:
       label: Azure Region
       description: "Select the Azure region."
-      options:
-        - centralus
-        - eastus
-        - eastus2
+      
     validations:
       required: true
 
