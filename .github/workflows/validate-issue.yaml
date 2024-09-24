@@ -19,15 +19,15 @@ jobs:
           echo "Issue Body:"
           echo "${{ github.event.issue.body }}"
           
-          # Extracting values using sed
-          environment_identifier=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Environment Identifier\*\*:\s*\(.*\)/\1/p' | xargs)
-          azure_region=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Azure Region\*\*:\s*\(.*\)/\1/p' | xargs)
-          business_unit=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Business Unit\*\*:\s*\(.*\)/\1/p' | xargs)
-          access_connector_id=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Access Connector ID\*\*:\s*\(.*\)/\1/p' | xargs)
-          user_assigned_managed_identity=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*User Assigned Managed Identity\*\*:\s*\(.*\)/\1/p' | xargs)
-          storage_container_url=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Storage Container URL\*\*:\s*\(.*\)/\1/p' | xargs)
-          owner_group=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Owner Group\*\*:\s*\(.*\)/\1/p' | xargs)
-          workspace_name=$(echo "${{ github.event.issue.body }}" | sed -n 's/.*Workspace Name\*\*:\s*\(.*\)/\1/p' | xargs)
+          # Extracting values using sed to handle headers
+          environment_identifier=$(echo "${{ github.event.issue.body }}" | sed -n '/### Environment Identifier/{n;p;}' | xargs)
+          azure_region=$(echo "${{ github.event.issue.body }}" | sed -n '/### Azure Region/{n;p;}' | xargs)
+          business_unit=$(echo "${{ github.event.issue.body }}" | sed -n '/### Business Unit/{n;p;}' | xargs)
+          access_connector_id=$(echo "${{ github.event.issue.body }}" | sed -n '/### Access Connector ID/{n;p;}' | xargs)
+          user_assigned_managed_identity=$(echo "${{ github.event.issue.body }}" | sed -n '/### User Assigned Managed Identity/{n;p;}' | xargs)
+          storage_container_url=$(echo "${{ github.event.issue.body }}" | sed -n '/### Storage Container URL/{n;p;}' | xargs)
+          owner_group=$(echo "${{ github.event.issue.body }}" | sed -n '/### Owner Group/{n;p;}' | xargs)
+          workspace_name=$(echo "${{ github.event.issue.body }}" | sed -n '/### Workspace Name/{n;p;}' | xargs)
 
           echo "Extracted values:"
           echo "Environment Identifier: '$environment_identifier'"
