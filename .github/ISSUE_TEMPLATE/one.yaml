@@ -1,0 +1,90 @@
+name: New Environment Request
+description: Submit the details to request a new environment setup.
+title: "[New Environment Request] - <short description>"
+labels: ["environment-request"]
+assignees: ["team-lead"]
+
+body:
+  - type: dropdown
+    id: environment_identifier
+    attributes:
+      label: Environment Identifier
+      description: "Select the environment type (dev/stg/nonprod/sbx/prod)."
+      options:
+        - dev
+        - stg
+        - nonprod
+        - sbx
+        - prod
+    validations:
+      required: true
+
+  - type: dropdown
+    id: azure_region
+    attributes:
+      label: Azure Region
+      description: "Select the Azure region."
+      options:
+        - centralus
+        - eastus
+        - eastus2
+    validations:
+      required: true
+
+  - type: input
+    id: business_unit
+    attributes:
+      label: Business Unit
+      description: "Enter the business unit."
+      placeholder: "e.g. sales, hr"
+    validations:
+      required: true
+
+  - type: input
+    id: access_connector_id
+    attributes:
+      label: Access Connector ID
+      description: "Enter the Access Connector ID (must start with /subscriptions/)."
+      placeholder: "/subscriptions/xxxx"
+    validations:
+      required: true
+      pattern: "^/subscriptions/.*$"
+
+  - type: input
+    id: user_assigned_managed_identity
+    attributes:
+      label: User Assigned Managed Identity
+      description: "Enter the user-assigned managed identity."
+      placeholder: "Enter the user-assigned managed identity"
+    validations:
+      required: true
+
+  - type: input
+    id: storage_container_url
+    attributes:
+      label: Storage Container URL
+      description: "Enter the storage container URL."
+      placeholder: "abfss://<container-name>@<storage-container-name>.dfs.core.windows.net"
+    validations:
+      required: true
+      pattern: "^abfss://.*@.*\.dfs\.core\.windows\.net$"
+
+  - type: input
+    id: owner_group
+    attributes:
+      label: Owner Group
+      description: "Enter the owner group (e.g., azu_xxxxx)."
+      placeholder: "azu_xxxxx"
+    validations:
+      required: true
+      pattern: "^azu_.*$"
+
+  - type: input
+    id: workspace_name
+    attributes:
+      label: Workspace Name
+      description: "Enter the workspace name (should not contain 'workspace' in the name)."
+      placeholder: "workspace name"
+    validations:
+      required: true
+      pattern: "^(?!.*workspace).*$"
