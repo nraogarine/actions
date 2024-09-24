@@ -15,8 +15,7 @@ body:
       label: Environment Identifier
       description: "Enter the environment identifier. Options: dev, stg, nonprod, sbx, prod."
       placeholder: "dev"
-      required: true
-
+      
   - type: dropdown
     id: azure_region
     attributes:
