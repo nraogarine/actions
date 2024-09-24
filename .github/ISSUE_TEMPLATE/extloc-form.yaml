@@ -34,7 +34,9 @@ body:
       label: Business Unit
       description: "Enter the business unit."
       placeholder: "e.g., Sales, IT, HR"
-     
+    
+    validations:
+      required: true 
 
   - type: input
     id: access_connector_id
