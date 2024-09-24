@@ -1,6 +1,6 @@
 name: UC Enablement Intake
 description: Submit the details to request to enabel UC.
-title: "[UC Enablement] - <short description>"
+title: "[USER] UC Enablement"
 labels: ["environment-request"]
 assignees: ["team-lead"]
 
