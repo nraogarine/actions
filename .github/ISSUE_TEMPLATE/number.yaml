@@ -35,7 +35,7 @@ body:
     attributes:
       label: "Business Unit"
       description: "Enter the business unit (any text)"
-      required: true
+      
     validations:
       required: true
 
@@ -45,7 +45,7 @@ body:
       label: "Access Connector ID"
       description: "Should be in the format /subscriptions/xxxx"
       placeholder: "/subscriptions/xxxx"
-      required: true
+      
     validations:
       required: true
 
@@ -54,7 +54,7 @@ body:
     attributes:
       label: "User Assigned Managed Identity"
       description: "Enter the user-assigned managed identity"
-      required: true
+      
     validations:
       required: true
   
@@ -63,7 +63,7 @@ body:
     attributes:
       label: "Workspace Name"
       description: "Enter the workspace name (it should not contain 'workspace')"
-      required: true
+      
     validations:
       required: true
 
@@ -80,7 +80,7 @@ body:
         - 6
         - 7
       description: "Select how many storage containers you want to provide"
-      required: true
+      
 
   # Use conditionals to display storage-container-urls and owner-group based on the user's selection.
   - type: input
@@ -88,7 +88,7 @@ body:
     attributes:
       label: "Storage Container URL 1"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 1
@@ -99,7 +99,7 @@ body:
     attributes:
       label: "Owner Group 1"
       description: "Enter the owner group (azu_xxxxx)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 1
@@ -111,7 +111,7 @@ body:
     attributes:
       label: "Storage Container URL 2"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 2
@@ -123,7 +123,7 @@ body:
     attributes:
       label: "Owner Group 2"
       description: "Enter the owner group (azu_xxxxx)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 2
@@ -135,7 +135,7 @@ body:
     attributes:
       label: "Storage Container URL 3"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 3
@@ -147,7 +147,7 @@ body:
     attributes:
       label: "Owner Group 3"
       description: "Enter the owner group (azu_xxxxx)"
-      required: true
+      
     conditions:
       - id: num-storage-containers
         value: 3
