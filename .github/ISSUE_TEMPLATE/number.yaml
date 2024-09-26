@@ -97,7 +97,7 @@ body:
       required: true
   - type: input
     id: owner-group-1
-     attributes:
+    attributes:
       label: "Owner Group 1"
       description: "Enter the owner group (azu_xxxxx)"
       required: true
