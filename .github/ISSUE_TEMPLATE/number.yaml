@@ -92,36 +92,59 @@ body:
   - type: input
     
     attributes:
-      label: "Owner Group 1"
-      description: "Enter the owner group (azu_xxxxx)"
-      
+      label: "Storage Container URL 2"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
    
   - type: input
     
     attributes:
-      label: "Storage Container URL 2"
+      label: "Storage Container URL 3"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
       
   - type: input
     
     attributes:
-      label: "Owner Group 2"
-      description: "Enter the owner group (azu_xxxxx)"
+      label: "Storage Container URL 4"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
     
   - type: input
     
     attributes:
-      label: "Storage Container URL 3"
+      label: "Storage Container URL 5"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
  
     
   - type: input
     
     attributes:
-      label: "Owner Group 3"
-      description: "Enter the owner group (azu_xxxxx)"
-   
+      label: "Storage Container URL 6"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+	  
+ 
+  - type: input
+    
+    attributes:
+      label: "Storage Container URL 7"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+
+  - type: input
+    
+    attributes:
+      label: "Storage Container URL 8"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+
+  - type: input
+    
+    attributes:
+      label: "Storage Container URL 9"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+
+  - type: input
+    
+    attributes:
+      label: "Storage Container URL 6"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"  
     
   # Add more storage-container-url and owner-group fields up to 5 based on user selection...
