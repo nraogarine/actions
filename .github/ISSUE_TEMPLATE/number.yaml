@@ -56,7 +56,7 @@ body:
       description: "Enter the user-assigned managed identity"
       
     validations:
-      required: true
+      required: false
   
   - type: input
     id: workspace-name
