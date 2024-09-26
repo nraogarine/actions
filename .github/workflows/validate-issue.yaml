@@ -7,7 +7,7 @@ on:
 jobs:
   validate-inputs:
     runs-on: ubuntu-latest
-    if: github.event.issue.title == 'Your-Issue-Form-Title'  # Replace with the actual title of the issue form
+    if: github.event.issue.title == 'UC Enablement Intake'  # Replace with the actual title of the issue form
     steps:
     - name: Extract issue form details
       id: issue-details
