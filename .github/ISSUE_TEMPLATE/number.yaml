@@ -110,39 +110,30 @@ body:
       
     
   - type: input
-    
+  
     attributes:
       label: "Storage Container URL 5"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
- 
-    
   - type: input
-    
     attributes:
       label: "Storage Container URL 6"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-	  
- 
   - type: input
-    
     attributes:
       label: "Storage Container URL 7"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
 
   - type: input
-    
     attributes:
       label: "Storage Container URL 8"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
 
   - type: input
-    
     attributes:
       label: "Storage Container URL 9"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
 
   - type: input
-    
     attributes:
       label: "Storage Container URL 6"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"  
