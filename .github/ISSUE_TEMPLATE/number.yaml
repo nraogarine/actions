@@ -13,9 +13,9 @@ body:
         - nonprod
         - sbx
         - prod
-    validations:
-      required: true
       description: "Select the environment identifier"
+      required: true
+    validations:
       required: true
 
   - type: dropdown
