@@ -13,6 +13,8 @@ body:
         - nonprod
         - sbx
         - prod
+    validations:
+      required: true
       description: "Select the environment identifier"
       required: true
 
@@ -24,6 +26,8 @@ body:
         - centralus
         - eastus
         - eastus2
+    validations:
+      required: true
       description: "Select Azure region"
       required: true
 
@@ -33,6 +37,8 @@ body:
       label: "Business Unit"
       description: "Enter the business unit (any text)"
       required: true
+    validations:
+      required: true
 
   - type: input
     id: access-connector-id
@@ -41,6 +47,8 @@ body:
       description: "Should be in the format /subscriptions/xxxx"
       placeholder: "/subscriptions/xxxx"
       required: true
+    validations:
+      required: true
 
   - type: input
     id: user-assigned-managed-identity
@@ -48,12 +56,16 @@ body:
       label: "User Assigned Managed Identity"
       description: "Enter the user-assigned managed identity"
       required: true
-
+    validations:
+      required: true
+  
   - type: input
     id: workspace-name
     attributes:
       label: "Workspace Name"
       description: "Enter the workspace name (it should not contain 'workspace')"
+      required: true
+    validations:
       required: true
 
   - type: dropdown
@@ -66,6 +78,8 @@ body:
         - 3
         - 4
         - 5
+        - 6
+        - 7
       description: "Select how many storage containers you want to provide"
       required: true
 
@@ -79,16 +93,19 @@ body:
     conditions:
       - id: num-storage-containers
         value: 1
-
+    validations:
+      required: true
   - type: input
     id: owner-group-1
-    attributes:
+     attributes:
       label: "Owner Group 1"
       description: "Enter the owner group (azu_xxxxx)"
       required: true
     conditions:
       - id: num-storage-containers
         value: 1
+    validations:
+      required: true
 
   - type: input
     id: storage-container-url-2
@@ -99,6 +116,8 @@ body:
     conditions:
       - id: num-storage-containers
         value: 2
+    validations:
+      required: true
 
   - type: input
     id: owner-group-2
@@ -109,6 +128,8 @@ body:
     conditions:
       - id: num-storage-containers
         value: 2
+    validations:
+      required: true
 
   - type: input
     id: storage-container-url-3
@@ -119,6 +140,8 @@ body:
     conditions:
       - id: num-storage-containers
         value: 3
+    validations:
+      required: true
 
   - type: input
     id: owner-group-3
@@ -129,5 +152,7 @@ body:
     conditions:
       - id: num-storage-containers
         value: 3
+    validations:
+      required: true
 
   # Add more storage-container-url and owner-group fields up to 5 based on user selection...
