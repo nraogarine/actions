@@ -124,5 +124,5 @@ body:
     attributes:
       label: "Azure Owner Group Name"
       description: "Enter the owner group (azu_xxxxx)"
-      required: true
+      
     
