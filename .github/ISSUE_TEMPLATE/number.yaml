@@ -68,7 +68,7 @@ body:
       required: true
 
   - type: dropdown
-    id: num-storage-containers
+    
     attributes:
       label: "Number of Storage Containers"
       options:
