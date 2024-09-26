@@ -7,7 +7,8 @@ on:
 jobs:
   validate-inputs:
     runs-on: ubuntu-latest
-    if: github.event.issue.title == 'environment-request'  # Replace with the actual title of the issue form
+    if: contains(github.event.issue.labels.*.name, 'environment-request')
+    #if: github.event.issue.title == 'environment-request'  # Replace with the actual title of the issue form
     steps:
     - name: Extract issue form details
       id: issue-details
