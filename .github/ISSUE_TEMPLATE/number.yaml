@@ -84,58 +84,45 @@ body:
 
   # Use conditionals to display storage-container-urls and owner-group based on the user's selection.
   - type: input
-    
+    id: storage-container-url-1
     attributes:
       label: "Storage Container URL 1"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
         
   - type: input
-    
+    id: storage-container-url-2
     attributes:
       label: "Storage Container URL 2"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
    
   - type: input
-    
+    id: storage-container-url-3
     attributes:
       label: "Storage Container URL 3"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
       
   - type: input
-    
+    id: storage-container-url-4
     attributes:
       label: "Storage Container URL 4"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
     
   - type: input
-  
+    id: storage-container-url-5
     attributes:
       label: "Storage Container URL 5"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
   - type: input
+    id: storage-container-url-6
     attributes:
       label: "Storage Container URL 6"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
   - type: input
+    id: owner-group
     attributes:
-      label: "Storage Container URL 7"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-
-  - type: input
-    attributes:
-      label: "Storage Container URL 8"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-
-  - type: input
-    attributes:
-      label: "Storage Container URL 9"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-
-  - type: input
-    attributes:
-      label: "Storage Container URL 10"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"  
+      label: "Azure Owner Group Name"
+      description: "Enter the owner group (azu_xxxxx)"
+      required: true
     
-  # Add more storage-container-url and owner-group fields up to 5 based on user selection...
