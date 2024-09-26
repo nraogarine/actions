@@ -1,7 +1,7 @@
 name: "UC Enablement Intake Request Form"
 description: "Fill out the form to request storage configuration"
 title: "[USER] UC Enablement"
-labels: ["open""]
+labels: ["open"]
 body:
   - type: dropdown
     id: environment-identifier
