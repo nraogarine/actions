@@ -135,7 +135,7 @@ body:
 
   - type: input
     attributes:
-      label: "Storage Container URL 6"
+      label: "Storage Container URL 10"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"  
     
   # Add more storage-container-url and owner-group fields up to 5 based on user selection...
