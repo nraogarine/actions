@@ -26,9 +26,9 @@ body:
         - centralus
         - eastus
         - eastus2
-    validations:
-      required: true
       description: "Select Azure region"
+        required: true
+    validations:
       required: true
 
   - type: input
