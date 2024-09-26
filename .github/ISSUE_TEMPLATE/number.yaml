@@ -80,12 +80,11 @@ body:
         - 6
         - 7
       description: "Select how many storage containers you want to provide"
-    validations:
-      required: true
+      
 
   # Use conditionals to display storage-container-urls and owner-group based on the user's selection.
   - type: input
-    id: storage-container-url-1
+    
     attributes:
       label: "Storage Container URL 1"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
@@ -95,7 +94,7 @@ body:
         value: 1
     
   - type: input
-    id: owner-group-1
+    
     attributes:
       label: "Owner Group 1"
       description: "Enter the owner group (azu_xxxxx)"
@@ -104,7 +103,7 @@ body:
       - id: num-storage-containers
         value: 1
   - type: input
-    id: storage-container-url-2
+    
     attributes:
       label: "Storage Container URL 2"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
@@ -114,7 +113,7 @@ body:
         value: 2
     
   - type: input
-    id: owner-group-2
+    
     attributes:
       label: "Owner Group 2"
       description: "Enter the owner group (azu_xxxxx)"
@@ -124,7 +123,7 @@ body:
         value: 2
     
   - type: input
-    id: storage-container-url-3
+    
     attributes:
       label: "Storage Container URL 3"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
@@ -134,7 +133,7 @@ body:
         value: 3
     
   - type: input
-    id: owner-group-3
+    
     attributes:
       label: "Owner Group 3"
       description: "Enter the owner group (azu_xxxxx)"
