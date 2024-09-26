@@ -80,7 +80,8 @@ body:
         - 6
         - 7
       description: "Select how many storage containers you want to provide"
-      
+    validations:
+      required: true
 
   # Use conditionals to display storage-container-urls and owner-group based on the user's selection.
   - type: input
