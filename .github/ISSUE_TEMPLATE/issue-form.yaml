@@ -57,7 +57,7 @@ body:
       description: "Enter the user-assigned managed identity."
       placeholder: "Enter the user-assigned managed identity"
     validations:
-      required: true
+      required: false
 
   - type: input
     id: storage_container_url
