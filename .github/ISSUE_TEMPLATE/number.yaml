@@ -90,8 +90,7 @@ body:
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
     conditions:
-      - id: num-storage-containers
-        value: 1
+      - value: 1
     
   - type: input
     
@@ -100,8 +99,7 @@ body:
       description: "Enter the owner group (azu_xxxxx)"
       
     conditions:
-      - id: num-storage-containers
-        value: 1
+      - value: 1
   - type: input
     
     attributes:
