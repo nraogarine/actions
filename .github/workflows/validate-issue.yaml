@@ -26,7 +26,7 @@ jobs:
 
       - name: Validate Inputs
         run: |
-          if [[ "${{ extract-issue.outputs.environment_identifier }}" =~ ^(dev|stg|nonprod|sbx|prod)$ ]]; then
+          if [[ "${{ steps.extract-issue.outputs.environment_identifier }}" =~ ^(dev|stg|nonprod|sbx|prod)$ ]]; then
             echo "Valid environment identifier."
           else
             echo "Invalid environment identifier: ${{ steps.extract-issue.outputs.environment_identifier }}"; exit 1;
