@@ -92,8 +92,7 @@ body:
     conditions:
       - id: num-storage-containers
         value: 1
-    validations:
-      required: true
+    
   - type: input
     id: owner-group-1
     attributes:
