@@ -88,56 +88,40 @@ body:
     attributes:
       label: "Storage Container URL 1"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-      
-    conditions:
-      - value: 1
-    
+        
   - type: input
     
     attributes:
       label: "Owner Group 1"
       description: "Enter the owner group (azu_xxxxx)"
       
-    conditions:
-      - value: 1
+   
   - type: input
     
     attributes:
       label: "Storage Container URL 2"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
       
-    conditions:
-      - id: num-storage-containers
-        value: 2
-    
+      
   - type: input
     
     attributes:
       label: "Owner Group 2"
       description: "Enter the owner group (azu_xxxxx)"
       
-    conditions:
-      - id: num-storage-containers
-        value: 2
     
   - type: input
     
     attributes:
       label: "Storage Container URL 3"
       description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
-      
-    conditions:
-      - id: num-storage-containers
-        value: 3
+ 
     
   - type: input
     
     attributes:
       label: "Owner Group 3"
       description: "Enter the owner group (azu_xxxxx)"
-      
-    conditions:
-      - id: num-storage-containers
-        value: 3
+   
     
   # Add more storage-container-url and owner-group fields up to 5 based on user selection...
