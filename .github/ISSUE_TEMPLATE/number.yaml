@@ -27,7 +27,7 @@ body:
         - eastus
         - eastus2
       description: "Select Azure region"
-        required: true
+      required: true
     validations:
       required: true
 
