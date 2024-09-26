@@ -14,7 +14,7 @@ body:
         - sbx
         - prod
       description: "Select the environment identifier"
-        required: true
+      required: true
     validations:
       required: true
 
