@@ -1,0 +1,133 @@
+name: "Storage Request Form"
+description: "Fill out the form to request storage configuration"
+title: "[Storage Request] Request storage configuration"
+labels: ["storage-request", "pending-validation"]
+body:
+  - type: dropdown
+    id: environment-identifier
+    attributes:
+      label: "Environment Identifier"
+      options:
+        - dev
+        - stg
+        - nonprod
+        - sbx
+        - prod
+      description: "Select the environment identifier"
+      required: true
+
+  - type: dropdown
+    id: azure-region
+    attributes:
+      label: "Azure Region"
+      options:
+        - centralus
+        - eastus
+        - eastus2
+      description: "Select Azure region"
+      required: true
+
+  - type: input
+    id: business-unit
+    attributes:
+      label: "Business Unit"
+      description: "Enter the business unit (any text)"
+      required: true
+
+  - type: input
+    id: access-connector-id
+    attributes:
+      label: "Access Connector ID"
+      description: "Should be in the format /subscriptions/xxxx"
+      placeholder: "/subscriptions/xxxx"
+      required: true
+
+  - type: input
+    id: user-assigned-managed-identity
+    attributes:
+      label: "User Assigned Managed Identity"
+      description: "Enter the user-assigned managed identity"
+      required: true
+
+  - type: input
+    id: workspace-name
+    attributes:
+      label: "Workspace Name"
+      description: "Enter the workspace name (it should not contain 'workspace')"
+      required: true
+
+  - type: dropdown
+    id: num-storage-containers
+    attributes:
+      label: "Number of Storage Containers"
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+      description: "Select how many storage containers you want to provide"
+      required: true
+
+  # Use conditionals to display storage-container-urls and owner-group based on the user's selection.
+  - type: input
+    id: storage-container-url-1
+    attributes:
+      label: "Storage Container URL 1"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 1
+
+  - type: input
+    id: owner-group-1
+    attributes:
+      label: "Owner Group 1"
+      description: "Enter the owner group (azu_xxxxx)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 1
+
+  - type: input
+    id: storage-container-url-2
+    attributes:
+      label: "Storage Container URL 2"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 2
+
+  - type: input
+    id: owner-group-2
+    attributes:
+      label: "Owner Group 2"
+      description: "Enter the owner group (azu_xxxxx)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 2
+
+  - type: input
+    id: storage-container-url-3
+    attributes:
+      label: "Storage Container URL 3"
+      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 3
+
+  - type: input
+    id: owner-group-3
+    attributes:
+      label: "Owner Group 3"
+      description: "Enter the owner group (azu_xxxxx)"
+      required: true
+    conditions:
+      - id: num-storage-containers
+        value: 3
+
+  # Add more storage-container-url and owner-group fields up to 5 based on user selection...
