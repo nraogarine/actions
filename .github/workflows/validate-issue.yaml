@@ -16,7 +16,8 @@ jobs:
           # Fetch issue body
           ISSUE_BODY=$(curl -s -H "Authorization: token ${{ secrets.GIT_TOKEN }}" \
                       https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }} | jq -r .body)
-
+          # Print issue body for debugging
+          echo "Issue Body: ${ISSUE_BODY}"
           # Extract environment-identifier, azure-region, and other fields using regex
           #run: echo "Environment: '${{ github.event.issue.body.environment-identifier }}'"
           #ENVIRONMENT_IDENTIFIER=$(echo "${ISSUE_BODY}" | grep -oP '(?<=environment-identifier:).*' | xargs)
