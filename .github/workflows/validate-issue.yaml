@@ -1,67 +1,77 @@
-name: Validate Environment Request
+# .github/workflows/validate-storage-request.yml
+name: "Validate Storage Request"
 on:
   issues:
-    types:
-      - opened
+    types: [opened, edited]
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if issue has the right label
-        if: contains(github.event.issue.labels.*.name, 'environment-request')
-        run: echo "This is an environment request issue."
-
-      - name: Extract issue details
+      - name: Extract Issue Data
         id: extract-issue
         run: |
-          echo "::set-output name=environment_identifier::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=environment_identifier:).*')"
-          echo "::set-output name=azure_region::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=azure_region:).*')"
-          echo "::set-output name=business_unit::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=business_unit:).*')"
-          echo "::set-output name=access_connector_id::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=access_connector_id:).*')"
-          echo "::set-output name=user_assigned_managed_identity::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=user_assigned_managed_identity:).*')"
-          echo "::set-output name=storage_container_url::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=storage_container_url:).*')"
-          echo "::set-output name=owner_group::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=owner_group:).*')"
-          echo "::set-output name=workspace_name::$(echo '${{ github.event.issue.body }}' | grep -oP '(?<=workspace_name:).*')"
+          echo "Extracting issue data"
 
-      - name: Validate Inputs
+          # Fetch issue body
+          ISSUE_BODY=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+                      https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }} | jq -r .body)
+
+          # Extract environment-identifier, azure-region, and other fields using regex
+          ENVIRONMENT_IDENTIFIER=$(echo "${ISSUE_BODY}" | grep -oP '(?<=environment-identifier:).*' | xargs)
+          AZURE_REGION=$(echo "${ISSUE_BODY}" | grep -oP '(?<=azure-region:).*' | xargs)
+          BUSINESS_UNIT=$(echo "${ISSUE_BODY}" | grep -oP '(?<=business-unit:).*' | xargs)
+          ACCESS_CONNECTOR_ID=$(echo "${ISSUE_BODY}" | grep -oP '(?<=access-connector-id:).*' | xargs)
+          MANAGED_IDENTITY=$(echo "${ISSUE_BODY}" | grep -oP '(?<=user-assigned-managed-identity:).*' | xargs)
+          WORKSPACE_NAME=$(echo "${ISSUE_BODY}" | grep -oP '(?<=workspace-name:).*' | xargs)
+          STORAGE_CONTAINER_COUNT=$(echo "${ISSUE_BODY}" | grep -oP '(?<=num-storage-containers:).*' | xargs)
+
+          # Set extracted data as output for further validation
+          echo "environment-identifier=$ENVIRONMENT_IDENTIFIER" >> $GITHUB_OUTPUT
+          echo "azure-region=$AZURE_REGION" >> $GITHUB_OUTPUT
+          echo "workspace-name=$WORKSPACE_NAME" >> $GITHUB_OUTPUT
+          echo "storage-container-count=$STORAGE_CONTAINER_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Validate Environment and Inputs
         run: |
-          if [[ "${{ steps.extract-issue.outputs.environment_identifier }}" =~ ^(dev|stg|nonprod|sbx|prod)$ ]]; then
-            echo "Valid environment identifier."
+          echo "Validating environment and inputs"
+
+          # Validate environment-identifier
+          if [[ "${{ steps.extract-issue.outputs.environment-identifier }}" =~ ^(dev|stg|nonprod|sbx|prod)$ ]]; then
+            echo "Valid environment identifier: ${{ steps.extract-issue.outputs.environment-identifier }}"
           else
-            echo "Invalid environment identifier: ${{ steps.extract-issue.outputs.environment_identifier }}"; exit 1;
+            echo "Invalid environment identifier"; exit 1;
           fi
 
-          if [[ "${{ steps.extract-issue.outputs.azure_region }}" =~ ^(centralus|eastus|eastus2)$ ]]; then
-            echo "Valid Azure region."
+          # Validate Azure region
+          if [[ "${{ steps.extract-issue.outputs.azure-region }}" =~ ^(centralus|eastus|eastus2)$ ]]; then
+            echo "Valid Azure region: ${{ steps.extract-issue.outputs.azure-region }}"
           else
-            echo "Invalid Azure region: ${{ steps.extract-issue.outputs.azure_region }}"; exit 1;
+            echo "Invalid Azure region"; exit 1;
           fi
 
-          if [[ "${{ steps.extract-issue.outputs.access_connector_id }}" =~ ^/subscriptions/.*$ ]]; then
-            echo "Valid Access Connector ID."
-          else
-            echo "Invalid Access Connector ID: ${{ steps.extract-issue.outputs.access_connector_id }}"; exit 1;
+          # Validate Access Connector ID format
+          if [[ ! "${{ steps.extract-issue.outputs.access-connector-id }}" =~ ^/subscriptions/ ]]; then
+            echo "Invalid Access Connector ID"; exit 1;
           fi
 
-          if [[ "${{ steps.extract-issue.outputs.storage_container_url }}" =~ ^abfss://.*@.*\.dfs\.core\.windows\.net$ ]]; then
-            echo "Valid Storage Container URL."
-          else
-            echo "Invalid Storage Container URL: ${{ steps.extract-issue.outputs.storage_container_url }}"; exit 1;
+          # Validate Workspace Name doesn't contain "workspace"
+          if [[ "${{ steps.extract-issue.outputs.workspace-name }}" =~ workspace ]]; then
+            echo "Workspace name contains 'workspace'. Invalid!"; exit 1;
           fi
 
-          if [[ "${{ steps.extract-issue.outputs.owner_group }}" =~ ^azu_.*$ ]]; then
-            echo "Valid Owner Group."
-          else
-            echo "Invalid Owner Group: ${{ steps.extract-issue.outputs.owner_group }}"; exit 1;
-          fi
+          # Validate Storage Container URLs and Owner Groups (loop based on user input)
+          for i in $(seq 1 ${{ steps.extract-issue.outputs.storage-container-count }}); do
+            URL_VAR="steps.extract-issue.outputs.storage-container-url-${i}"
+            OWNER_VAR="steps.extract-issue.outputs.owner-group-${i}"
 
-          if [[ ! "${{ steps.extract-issue.outputs.workspace_name }}" =~ .*workspace.* ]]; then
-            echo "Valid Workspace Name."
-          else
-            echo "Invalid Workspace Name: ${{ steps.extract-issue.outputs.workspace_name }}"; exit 1;
-          fi
+            if [[ ! "${!URL_VAR}" =~ abfss://.*@.*.dfs.core.windows.net ]]; then
+              echo "Invalid storage container URL: ${!URL_VAR}"; exit 1;
+            fi
 
-      - name: Issue validation passed
-        run: echo "All inputs are valid."
+            if [[ ! "${!OWNER_VAR}" =~ ^azu_ ]]; then
+              echo "Invalid owner group: ${!OWNER_VAR}"; exit 1;
+            fi
+          done
 
+          echo "All inputs are valid."
