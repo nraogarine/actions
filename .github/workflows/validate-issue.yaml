@@ -18,7 +18,9 @@ jobs:
                       https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.issue.number }} | jq -r .body)
 
           # Extract environment-identifier, azure-region, and other fields using regex
-          ENVIRONMENT_IDENTIFIER=$(echo "${ISSUE_BODY}" | grep -oP '(?<=environment-identifier:).*' | xargs)
+          run: echo "Environment: '${{ github.event.issue.body.environment-identifier }}'"
+          #ENVIRONMENT_IDENTIFIER=$(echo "${ISSUE_BODY}" | grep -oP '(?<=environment-identifier:).*' | xargs)
+          ENVIRONMENT_IDENTIFIER=$(echo "Environment: '${{ github.event.issue.body.environment-identifier }}'")
           AZURE_REGION=$(echo "${ISSUE_BODY}" | grep -oP '(?<=azure-region:).*' | xargs)
           BUSINESS_UNIT=$(echo "${ISSUE_BODY}" | grep -oP '(?<=business-unit:).*' | xargs)
           ACCESS_CONNECTOR_ID=$(echo "${ISSUE_BODY}" | grep -oP '(?<=access-connector-id:).*' | xargs)
