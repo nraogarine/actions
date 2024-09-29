@@ -27,8 +27,8 @@ jobs:
           STORAGE_CONTAINER_COUNT=$(echo "${ISSUE_BODY}" | grep -oP '(?<=num-storage-containers:).*' | xargs)
 
           # Set extracted data as output for further validation
-          echo "environment-identifier=$ENVIRONMENT_IDENTIFIER" >> $GITHUB_OUTPUT
-          echo "azure-region=$AZURE_REGION" >> $GITHUB_OUTPUT
+          echo "environment-identifier=$ENVIRONMENT_IDENTIFIER" 
+          echo "azure-region=$AZURE_REGION" 
           echo "workspace-name=$WORKSPACE_NAME" >> $GITHUB_OUTPUT
           echo "storage-container-count=$STORAGE_CONTAINER_COUNT" >> $GITHUB_OUTPUT
 
