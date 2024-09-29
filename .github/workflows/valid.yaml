@@ -1,0 +1,5 @@
+ISSUE_BODY=$(curl -s -H "Authorization: token ***" \
+              https://api.github.com/repos/nraogarine/actions/issues/39 | jq -r .body)
+
+# Print issue body for debugging
+echo "Issue Body: ${ISSUE_BODY}"
