@@ -1,22 +1,22 @@
 name: "sample"
 description: "Sampel Form"
 body:
-  - type: dropdown
-  - section:
-      - id: [animals]
-        block-list: ['None', 'Other']
-        validations:
-          required: true
-        label:
-          - name: 'kind: amphibians'
-            keys: ['🐸 Frog']
-          - name: 'kind: birds'
-            keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
-          - name: 'kind: fish'
-            keys: ['🐡 Blowfish', '🐟 Fish', '🦈 Shark']
-          - name: 'kind: mammals'
-            keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
-          - name: 'kind: reptiles'
-            keys: ['🐊 Crocodile']
-          - name: 'invertebrates'
-            keys: ['🐛 Bug', '🕷️ Spider']
+  # ...
+
+- type: dropdown
+  id: severity
+  attributes:
+    label: Severity impact
+    description: Please choose the severity of the impact of this issue.
+    multiple: false
+    options:
+      - 'None'
+      - 'Low'
+      - 'Medium'
+      - 'High'
+      - 'Urgent'
+      - 'Other'
+  validations:
+    required: true
+
+# ...
