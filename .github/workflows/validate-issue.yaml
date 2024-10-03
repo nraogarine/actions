@@ -3,7 +3,11 @@ name: "Validate Storage Request"
 on:
   issues:
     types: [opened, edited]
-
+env:
+  GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+  LDAP_MS_ID: ${{ secrets.LDAP_MSID }}
+  LDAP_PASSWORD: ${{ secrets.LDAP_PASSWORD }}
+  
 jobs:
   validate:
     runs-on: ubuntu-latest
