@@ -19,7 +19,7 @@ jobs:
           template-path: .github/ISSUE_TEMPLATE/number.yml
 
       - name: extract-data
-        id: extract-issues-form
+        id: extract-issue
         run: |
           echo "Extracting issue data"
 
