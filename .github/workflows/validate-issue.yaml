@@ -12,8 +12,14 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Extract Issue Data
-        id: extract-issue
+      - uses: actions/checkout@v3 
+      - name: Issues Template
+        id: issues-template 
+        with: 
+          template-path: .github/ISSUE_TEMPLATE/number.yml
+
+      - name: extract-data
+        id: extract-issues-form
         run: |
           echo "Extracting issue data"
 
