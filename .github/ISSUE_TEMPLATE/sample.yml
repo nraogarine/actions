@@ -4,6 +4,7 @@ body:
   - section:
       - id: [animals]
         block-list: ['None', 'Other']
+        required: true 
         label:
           - name: 'kind: amphibians'
             keys: ['🐸 Frog']
