@@ -1,3 +1,5 @@
+name: "sample"
+description: "Sampel Form"
 policy:
   - section:
       - id: [animals]
