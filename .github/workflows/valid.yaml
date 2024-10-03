@@ -1,5 +1,35 @@
-ISSUE_BODY=$(curl -s -H "Authorization: token ***" \
-              https://api.github.com/repos/nraogarine/actions/issues/39 | jq -r .body)
+# .github/workflows/validate-storage-request.yml
+name: "Validate Storage Request"
+on:
+  issues:
+    types: [opened, edited]
+env:
+  GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+  LDAP_MS_ID: ${{ secrets.LDAP_MSID }}
+  LDAP_PASSWORD: ${{ secrets.LDAP_PASSWORD }}
+  
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 
+      - name: Issues Template
+        id: issues-parser
+        with: 
+          template-path: .github/ISSUE_TEMPLATE/number.yml
 
-# Print issue body for debugging
-echo "Issue Body: ${ISSUE_BODY}"
+      
+      - name: Validate Environment
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
+        with: 
+          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          section: environment-identifier
+          token: ${{ secrets.GIT_TOKEN }}
+
+      - name: Validate azure-region
+        uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
+        with: 
+          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          section: azure-region
+          token: ${{ secrets.GIT_TOKEN }}   
+ 
