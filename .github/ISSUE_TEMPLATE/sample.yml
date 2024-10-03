@@ -1,6 +1,6 @@
 name: "sample"
 description: "Sampel Form"
-policy:
+body:
   - section:
       - id: [animals]
         block-list: ['None', 'Other']
