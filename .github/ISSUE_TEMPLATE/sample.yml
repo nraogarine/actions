@@ -1,0 +1,17 @@
+policy:
+  - section:
+      - id: [animals]
+        block-list: ['None', 'Other']
+        label:
+          - name: 'kind: amphibians'
+            keys: ['🐸 Frog']
+          - name: 'kind: birds'
+            keys: ['🐓 Rooster', '🐦 Bird', '🐧 Penguin']
+          - name: 'kind: fish'
+            keys: ['🐡 Blowfish', '🐟 Fish', '🦈 Shark']
+          - name: 'kind: mammals'
+            keys: ['🦍 Gorilla', '🐶 Dog', '🐬 Dolphin', '🐺 Wolf', '🦊 Fox', '🐴 Horse']
+          - name: 'kind: reptiles'
+            keys: ['🐊 Crocodile']
+          - name: 'invertebrates'
+            keys: ['🐛 Bug', '🕷️ Spider']
