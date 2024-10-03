@@ -1,6 +1,7 @@
 name: "sample"
 description: "Sampel Form"
 body:
+  - type: dropdown
   - section:
       - id: [animals]
         block-list: ['None', 'Other']
