@@ -117,7 +117,7 @@ jobs:
           
       - name: Inputs of issue
         id: inputs
-        run:  
+        run:  |
           # Parse values from the issue form
           environment_identifier="${{ github.event.issue.body | fromJson | index 'environment-identifier' }}"
           azure_region="${{ github.event.issue.body | fromJson | index 'azure-region' }}"
