@@ -19,7 +19,14 @@ jobs:
         with: 
           body: ${{ github.event.issue.body }}
           issue-form-template: number.yml
-
+      - name: Get event creation date
+        id: date
+        run: |
+          if [[ "${{ github.event_name }}" == "issues" ]]; then
+            echo "date=${{ github.event.issue.created_at }}" >> $GITHUB_ENV
+          elif [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            echo "date=${{ github.event.pull_request.created_at }}" >> $GITHUB_ENV
+          fi
       
       - name: Validate Environment
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
