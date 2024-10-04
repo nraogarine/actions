@@ -5,7 +5,7 @@ on:
     types: [opened, edited]
 env:
   GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
-  LDAP_MS_ID: ${{ secrets.LDAP_MSID }}
+  LDAP_MS_ID: ${{ secrets.LDAP_MS_ID }}
   LDAP_PASSWORD: ${{ secrets.LDAP_PASSWORD }}
   
 jobs:
