@@ -115,3 +115,25 @@ jobs:
           section: storage-container-url-5
           token: ${{ secrets.GIT_TOKEN }}              
           
+      - name: Inputs of issue
+        id: inputs
+        run: |
+          # Parse values from the issue form
+          environment_identifier="${{ github.event.issue.body | fromJson | index 'environment-identifier' }}"
+          azure_region="${{ github.event.issue.body | fromJson | index 'azure-region' }}"
+          business_unit="${{ github.event.issue.body | fromJson | index 'business-unit' }}"
+          access_connector_id="${{ github.event.issue.body | fromJson | index 'access-connector-id' }}"
+          user_assigned_managed_identity="${{ github.event.issue.body | fromJson | index 'user-assigned-managed-identity' }}"
+          workspace_name="${{ github.event.issue.body | fromJson | index 'workspace-name' }}"
+          storage_container_urls="${{ github.event.issue.body | fromJson | index 'storage-container-url' }}"
+          owner_group="${{ github.event.issue.body | fromJson | index 'owner-group' }}"
+
+          echo "Printing all values:"
+          echo "Environment Identifier: $environment_identifier"
+          echo "Azure Region: $azure_region"
+          echo "Business Unit: $business_unit"
+          echo "Access Connector ID: $access_connector_id"
+          echo "User Assigned Managed Identity: $user_assigned_managed_identity"
+          echo "Workspace Name: $workspace_name"
+          echo "Owner Group: $owner_group"
+          echo "Storage Container URLs: $storage_container_urls"
