@@ -87,42 +87,44 @@ body:
     id: storage-container-url-1
     attributes:
       label: "Storage Container URL 1"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss://container-name@storage-container-name.dfs.core.windows.net)"
         
   - type: input
     id: storage-container-url-2
     attributes:
       label: "Storage Container URL 2"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss://container-name@storage-container-name.dfs.core.windows.net)"
    
   - type: input
     id: storage-container-url-3
     attributes:
       label: "Storage Container URL 3"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss:/container-name@storage-container-name.dfs.core.windows.net)"
       
       
   - type: input
     id: storage-container-url-4
     attributes:
       label: "Storage Container URL 4"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss://container-name@storage-container-name.dfs.core.windows.net)"
       
     
   - type: input
     id: storage-container-url-5
     attributes:
       label: "Storage Container URL 5"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss://container-name@storage-container-name.dfs.core.windows.net)"
   - type: input
     id: storage-container-url-6
     attributes:
       label: "Storage Container URL 6"
-      description: "Enter the storage container URL (abfss://<container-name>@<storage-container-name>.dfs.core.windows.net)"
+      description: "Enter the storage container URL (abfss://container-name@storage-container-name.dfs.core.windows.net)"
   - type: input
     id: owner-group
     attributes:
       label: "Azure Owner Group Name"
       description: "Enter the owner group (azu_xxxxx)"
+    validations:
+      required: true  
       
     
