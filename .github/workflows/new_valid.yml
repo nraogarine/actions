@@ -1,0 +1,68 @@
+#Oct -04
+
+name: Parse and Validate Issue Form
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  validate-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if the issue was created from the form
+        if: ${{ github.event.issue.title == '[New Environment Request]' }}
+        run: |
+          echo "Processing issue created from form..."
+      
+      - name: Set Variables
+        run: |
+          environment_identifier="${{ github.event.issue.body | fromJson | select(.environment_identifier) }}"
+          azure_region="${{ github.event.issue.body | fromJson | select(.azure_region) }}"
+          business_unit="${{ github.event.issue.body | fromJson | select(.business_unit) }}"
+          access_connector_id="${{ github.event.issue.body | fromJson | select(.access_connector_id) }}"
+          user_assigned_managed_identity="${{ github.event.issue.body | fromJson | select(.user_assigned_managed_identity) }}"
+          workspace_name="${{ github.event.issue.body | fromJson | select(.workspace_name) }}"
+          storage_container_urls="${{ github.event.issue.body | fromJson | select(.storage_container_urls) }}"
+          owner_group="${{ github.event.issue.body | fromJson | select(.owner_group) }}"
+
+      - name: Validate and Print Variables
+        run: |
+          # Validate the storage container URL format
+          regex="^abfss://[^@]+@[^.]+\.dfs\.core\.windows\.net$"
+
+          echo "Validating environment identifier: $environment_identifier"
+          if [[ "$environment_identifier" != "dev" && "$environment_identifier" != "stg" && "$environment_identifier" != "nonprod" && "$environment_identifier" != "sbx" && "$environment_identifier" != "prod" ]]; then
+            echo "Invalid environment identifier!"
+            exit 1
+          fi
+
+          echo "Validating azure region: $azure_region"
+          if [[ "$azure_region" != "centralus" && "$azure_region" != "eastus" && "$azure_region" != "eastus2" ]]; then
+            echo "Invalid azure region!"
+            exit 1
+          fi
+
+          echo "Validating access connector ID: $access_connector_id"
+          if [[ "$access_connector_id" != /subscriptions/* ]]; then
+            echo "Invalid access connector ID!"
+            exit 1
+          fi
+
+          echo "Validating storage container URLs..."
+          while IFS= read -r url; do
+            if ! [[ $url =~ $regex ]]; then
+              echo "Invalid storage container URL: $url"
+              exit 1
+            fi
+          done <<< "$storage_container_urls"
+
+          echo "Printing all values:"
+          echo "Environment Identifier: $environment_identifier"
+          echo "Azure Region: $azure_region"
+          echo "Business Unit: $business_unit"
+          echo "Access Connector ID: $access_connector_id"
+          echo "User Assigned Managed Identity: $user_assigned_managed_identity"
+          echo "Workspace Name: $workspace_name"
+          echo "Owner Group: $owner_group"
+          echo "Storage Container URLs: $storage_container_urls"
