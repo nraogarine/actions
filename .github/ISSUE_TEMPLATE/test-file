@@ -1,0 +1,56 @@
+name: Sample Issue Form
+description: Capture two values from the user.
+title: "[Input Required] Please provide values"
+labels: input-required
+body:
+  - type: input
+    id: value_one
+    attributes:
+      label: "Enter first value"
+      placeholder: "First value"
+      required: true
+  - type: input
+    id: value_two
+    attributes:
+      label: "Enter second value"
+      placeholder: "Second value"
+      required: true
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for providing the values!
+
+
+
+name: Test Action Workflow
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Capture issue inputs
+      id: capture-inputs
+      run: |
+        echo "Issue title: ${{ github.event.issue.title }}"
+        echo "Value One: ${{ github.event.issue.body }}"
+        echo "Value Two: ${{ github.event.issue.body }}"
+
+    - name: Verify values
+      run: |
+        if [[ "${{ github.event.issue.title }}" == *"[Input Required]"* ]]; then
+          echo "Valid input issue"
+        else
+          echo "Invalid issue format"
+          exit 1
+        fi
+
+    - name: Complete action
+      run: echo "Action completed successfully!"
