@@ -18,7 +18,7 @@ jobs:
         uses: issue-ops/parser@v3.0.0
         with: 
           body: ${{ github.event.issue.body }}
-          template-path: number.yml
+          issue-form-template: .github/ISSUE_TEMPLATE/number.yml
 
       
       - name: Validate Environment
