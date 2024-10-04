@@ -39,14 +39,14 @@ jobs:
       - name: Validate business unit
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: business-unit
           token: ${{ secrets.GIT_TOKEN }}   
 
       - name: Validate access connector-id
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: access-connector-id
           token: ${{ secrets.GIT_TOKEN }}
 
@@ -68,14 +68,14 @@ jobs:
       - name: Validate number-of-azure-storage-locations
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: number-of-azure-storage-locations
           token: ${{ secrets.GIT_TOKEN }}   
 
       - name: Validate storage-container-url-1
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: storage-container-url-1
           token: ${{ secrets.GIT_TOKEN }} 
 
@@ -83,7 +83,7 @@ jobs:
       - name: Validate storage-container-url-2
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: storage-container-url-2
           token: ${{ secrets.GIT_TOKEN }} 
 
@@ -91,21 +91,21 @@ jobs:
       - name: Validate storage-container-url-3
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: storage-container-url-3
           token: ${{ secrets.GIT_TOKEN }} 
 
       - name: Validate storage-container-url-4
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: storage-container-url-4
           token: ${{ secrets.GIT_TOKEN }} 
 
       - name: Validate storage-container-url-5
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
-          issue-form: ${{ steps.issue-parser.outputs.jsonString }}
+          issue-form: ${{ steps.issue-parser.outputs.json }}
           section: storage-container-url-5
           token: ${{ secrets.GIT_TOKEN }}              
           
