@@ -87,4 +87,4 @@ jobs:
             fi
           done
 
-          echo "All inputs are valid."
+          echo "All inputs are good and valid."
