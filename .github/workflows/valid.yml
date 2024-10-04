@@ -28,18 +28,14 @@ jobs:
           section: environment-identifier
           token: ${{ secrets.GIT_TOKEN }}
             #echo "::set-output name=environment_identifier:"
-          run: |
-            echo "set-output name=environment_identifier - $(echo '${{ github.event.issue.body }}' | grep -oP '(?<=environment_identifier:).*')"
-
+          
       - name: Validate azure-region
         uses: redhat-plumbers-in-action/advanced-issue-labeler@v2
         with: 
           issue-form: ${{ steps.issue-parser.outputs.json }}
           section: azure-region
           token: ${{ secrets.GIT_TOKEN }}
-          run: |
-            echo "set-output name=Azure_Region - $(echo '${{ github.event.issue.body }}' | grep -oP '(?<=azure-region:).*')"  
-            
+          
 
       
       - name: Validate business unit
